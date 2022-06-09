@@ -7,11 +7,38 @@ The API is connected to CosmosDB, an Azure NoSQL database.
 1) **CI/CD piplines**: I used Azure DevOps to set up fully automated CI/CD piplines.<br>
    Checkout the code for the pipeline in [`azure-pipelines.yml`](https://github.com/Sufi-Dev/weatherapi/blob/main/azure-pipelines.yml)as well as the Docker file in [`Dockerfile`](https://github.com/Sufi-Dev/weatherapi/blob/main/Dockerfile)<br>
 2) **Terraform**: I provisioned cloud infrastructued using terraform.<br>
-checkout terraform files in the [`terraform`](https://github.com/Sufi-Dev/weatherapi/tree/main/terraform) directory 
+checkout terraform files in the [`terraform`](https://github.com/Sufi-Dev/weatherapi/tree/main/terraform) directory.
+```
+tree ./terraform 
+├── main.tf
+├── modules
+│   ├── compute
+│   │   └── vm
+│   │       ├── main.tf
+│   │       └── variable.tf
+│   ├── network
+│   │   └── vnet
+│   │       ├── maint.tf
+│   │       └── variable.tf
+│   ├── security
+│   │   └── network_security_group
+│   │       ├── maint.tf
+│   │       └── variable.tf
+│   └── storage
+│       └── cosmosDB
+│           ├── main.tf
+│           └── outputs.tf
+├── outputs.tf
+├── provider.tf
+├── terraform.tfvars
+└── variables.tf
+```
 3) **Ansible**: Configured the provisioned server using ansible playbook automatically after terraform completed building the infrastructure.
 checkout ansible playbook in the [`ansible`](https://github.com/Sufi-Dev/weatherapi/tree/main/ansible) directory.
 
 ## Related Projects
 I deployed the same web API in a **Blue Green deployment** architecture. See the link below:<br>
 [Automated cloud infrastructure deployment using Terraform based on (Blue Green) deployment architecture](https://github.com/Sufi-Dev/weatherapi/tree/main)
+
+
 
