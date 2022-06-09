@@ -8,7 +8,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids = [
     var.vm_nic,
   ]
-
+  
+ provisioner "local-exec" {
+    when       = create
+    on_failure = continue
+    command    = "ansible-playbook -i ${azurerm_public_ip.Pip.ip_address}, --private-key ./azureuser.pem ../ansible/playbook.yml -u adminuser --ssh-common-args='-o StrictHostKeyChecking=no'"
+  }
+  
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/key.pub")
