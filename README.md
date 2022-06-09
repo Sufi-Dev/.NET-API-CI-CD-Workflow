@@ -12,22 +12,23 @@ checkout terraform files in the [`terraform`](https://github.com/Sufi-Dev/weathe
 tree ./terraform 
 ├── main.tf
 ├── modules
-│   ├── compute
-│   │   └── vm
-│   │       ├── main.tf
-│   │       └── variable.tf
-│   ├── network
-│   │   └── vnet
-│   │       ├── maint.tf
-│   │       └── variable.tf
-│   ├── security
-│   │   └── network_security_group
-│   │       ├── maint.tf
-│   │       └── variable.tf
-│   └── storage
-│       └── cosmosDB
-│           ├── main.tf
-│           └── outputs.tf
+│   ├── compute
+│   │   └── vm
+│   │       ├── main.tf
+│   │       ├── terraform.tfvars
+│   │       └── variable.tf
+│   ├── network
+│   │   └── vnet
+│   │       ├── maint.tf
+│   │       └── variable.tf
+│   ├── security
+│   │   └── network_security_group
+│   │       ├── maint.tf
+│   │       └── variable.tf
+│   └── storage
+│       └── cosmosDB
+│           ├── main.tf
+│           └── variable.tf
 ├── outputs.tf
 ├── provider.tf
 ├── terraform.tfvars
