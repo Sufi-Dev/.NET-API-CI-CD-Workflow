@@ -38,10 +38,14 @@ tree ./terraform
 checkout ansible playbook in the [`ansible`](https://github.com/Sufi-Dev/weatherapi/tree/main/ansible) directory.
 
 ## Tools 🛠
-Azure <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/azure.svg" alt="azure" width="40" height="40"/></a>
-Terraform <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/terraform.svg" alt="azure" width="40" height="40"/></a>
-Linux <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/linux.svg" alt="linux" width="40" height="40"/> </a>
-NoSQL <a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/nosql.svg" alt="azure" width="40" height="40"/> </a>
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/azure.svg" alt="azure" width="40" height="20"/> Azure
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/terraform.svg" alt="azure" width="40" height="20"/> Terraform
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/linux.svg" alt="linux" width="40" height="20"/> Linux 
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/nosql.svg" alt="azure" width="40" height="20"/> NoSQL
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="20"/>Docker
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/ansible.svg" width="40" height="20" /> Ansible
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/git.svg" width="40" height="20" /> Git
+<img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/AzureDevOps.svg" width="40" height="20" /> Azure DevOps 
 
 ## Related Pojects 🔗
 I deployed the same web API in a **Blue Green deployment** architecture. See the link below:<br>
