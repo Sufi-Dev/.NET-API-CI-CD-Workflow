@@ -74,7 +74,7 @@ resource "azurerm_public_ip" "server_pip" {
   allocation_method   = "Static"
 
 } 
-
+# Initialized CosmosDB module 
 module "db" {
  source = "./modules/storage/cosmosDB"
  location = var.db_location
