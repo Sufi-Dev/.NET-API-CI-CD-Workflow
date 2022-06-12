@@ -1,8 +1,8 @@
 <img src="https://raw.githubusercontent.com/Sufi-Dev/weatherapi/Sufi-Dev-Test/weatherapi.png" >
 
 ## Project Info <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/info.gif" width="30" height="30">
-This web API gives you information about the weather from all over the world.
-The API is connected to CosmosDB, an Azure NoSQL database.
+This web API is sample basic API that is designed to respond with weather data.
+The API will have to be linked to CosmosDB., an Azure NoSQL database. The focus of this project is the automation of CI/CD pipelines.
 
 ## Project Map <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/map.png" width="30" height="30">
 1) **CI/CD piplines**: I used Azure DevOps to set up fully automated CI/CD piplines.<br>
