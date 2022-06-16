@@ -33,24 +33,51 @@ stages:
 - stage: Provision
   displayName: 'Terraforming on Azure...'
   jobs:
-  - job: Provision
+  - job: Terraform
     displayName: 'Provisioning Infrastructure'
-    pool:
-      vmImage: 'ubuntu-latest'
     variables: 
     - group: Teraform-Env-Vars
     steps:
-    - script: |
+    - bash: |
         set -e
         terraform init -input=false
         terraform apply -input=false -auto-approve
-        terraform output -raw server_ip
+        terraform output -raw server_ip > inventory.txt
+        SERVER_IP=`cat ./inventory.txt`
+        echo variable value is $SERVER_IP
+        echo "##vso[task.setvariable variable=webserver_address;isOutput=true]$SERVER_IP"
       name: 'RunTerraform'
       displayName: 'Run Terraform'
       workingDirectory: "$(System.DefaultWorkingDirectory)/Infrastructure\ as\ Code/terraform/"
+      
       env:
         ARM_CLIENT_ID: $(ARM_CLIENT_ID)
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
         ARM_TENANT_ID: $(ARM_TENANT_ID)
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
         TF_VAR_ssh_key: $(TF_VAR_ssh_key)
+  
+
+- stage: Configure
+  displayName: 'Run Ansible Playbook'
+  dependsOn: Provision
+  jobs:
+  - job: Configure
+    displayName: 'Run Ansible Playbook'
+    variables:
+      - name: SERVER_IP
+        value: $[ stageDependencies.Provision.Terraform.outputs['RunTerraform.webserver_address'] ]
+      - group: Ansible-Variable-Group
+    steps:
+    - task: DownloadSecureFile@1
+      name: Key
+      inputs:
+        secureFile: 'azureuser.pem'
+        retryCount: '1'
+    - bash: |
+        sudo chmod 400 $(Key.secureFilePath)
+        ansible-playbook -i $(SERVER_IP), --private-key $(Key.secureFilePath) \
+        playbook.yml -u adminuser --ssh-common-args='-o StrictHostKeyChecking=no'
+      name: 'RunAnsible'
+      displayName: 'Run Ansible'
+      workingDirectory: "$(System.DefaultWorkingDirectory)/Configuration\ Management/ansible"
