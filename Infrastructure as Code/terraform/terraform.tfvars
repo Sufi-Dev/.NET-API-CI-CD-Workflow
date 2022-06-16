@@ -4,5 +4,5 @@
 # tenant_id       = "*************************************"
 # subscription_id = "*************************************"
 
-location = "*************************************"
-resource_group_name = "*************************************"
+location = "southeastasia"
+resource_group_name = "Hello-World--RG"
