@@ -15,11 +15,16 @@ terraform {
 }
 
 # Configure the Microsoft Azure Provider
+
 provider "azurerm" {
-  tenant_id       = var.tenant_id
-  subscription_id = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
+#########################################################################
+# Terraform gets these values from ENV variables set during execution.###
+# This variables is not needed when azure executes pipline            ###
+#########################################################################
+#   tenant_id       = var.tenant_id
+#   subscription_id = var.subscription_id
+#   client_id       = var.client_id
+#   client_secret   = var.client_secret
 
 
   features {}
