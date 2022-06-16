@@ -15,6 +15,9 @@ variable "db_location" {
   type = string
   default = "eastasia"
 }
+variable "ssh_key" {
+  type = string
+} 
 
 # #########################################################################
 # # Terraform gets these values from ENV variables set during execution.###
