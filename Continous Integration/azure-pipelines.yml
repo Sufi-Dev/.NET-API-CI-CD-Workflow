@@ -46,7 +46,6 @@ stages:
         terraform apply -input=false -auto-approve
         terraform output -raw server_ip > inventory.txt
         SERVER_IP=`cat ./inventory.txt`
-        echo variable value is $SERVER_IP
         echo "##vso[task.setvariable variable=webserver_address;isOutput=true]$SERVER_IP"
       name: 'RunTerraform'
       displayName: 'Run Terraform'
@@ -71,15 +70,17 @@ stages:
         value: $[ stageDependencies.Provision.Terraform.outputs['RunTerraform.webserver_address'] ]
       - group: Ansible-Variable-Group
     steps:
+    # Download the SSH Key for Ansible to confige 
     - task: DownloadSecureFile@1
       name: Key
       inputs:
         secureFile: 'azureuser.pem'
         retryCount: '1'
+    # Begin Configuring the Server
     - bash: |
         sudo chmod 400 $(Key.secureFilePath)
         ansible-playbook -i $(SERVER_IP), --private-key $(Key.secureFilePath) \
-        playbook.yml -u adminuser --ssh-common-args='-o StrictHostKeyChecking=no'
+        playbook.yml -u adminuser --ssh-common-args='-o StrictHostKeyChecking=no' 
       name: 'RunAnsible'
       displayName: 'Run Ansible'
       workingDirectory: "$(System.DefaultWorkingDirectory)/Configuration\ Management/ansible"
