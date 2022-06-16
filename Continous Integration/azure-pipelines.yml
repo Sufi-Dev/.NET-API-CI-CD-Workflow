@@ -4,7 +4,10 @@
 
 trigger:
 - master
-
+  
+pool:
+  vmImage: 'ubuntu-latest' 
+  
 resources:
 - repo: self
 
@@ -18,8 +21,6 @@ stages:
   jobs:  
   - job: Build
     displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
       inputs:
@@ -57,7 +58,7 @@ stages:
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
         TF_VAR_ssh_key: $(TF_VAR_ssh_key)
   
-
+# Configure the Web Server
 - stage: Configure
   displayName: 'Run Ansible Playbook'
   dependsOn: Provision
