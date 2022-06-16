@@ -65,6 +65,7 @@ module "vm" {
   location            = var.location
   resource_group_name = var.resource_group_name
   vm_size             = local.vm_size
+  ssh_key             = var.ssh_key
 }
 # Public IP address 
 resource "azurerm_public_ip" "server_pip" {
