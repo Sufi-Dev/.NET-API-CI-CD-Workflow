@@ -29,7 +29,7 @@ stages:
         Dockerfile: '**/Dockerfile'
         tags: $(tag)
 
-
+# Provision the Infrastructure with Terraform 
 - stage: Provision
   displayName: 'Terraforming on Azure...'
   dependsOn: Build
@@ -54,4 +54,5 @@ stages:
         ARM_TENANT_ID: $(ARM_TENANT_ID)
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
         TF_VAR_imagebuild: $(tag)
+        
         
