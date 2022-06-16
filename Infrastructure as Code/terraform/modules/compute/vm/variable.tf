@@ -15,3 +15,7 @@ variable "location" {
 variable "vm_nic" {
   type = string
 }
+
+variable "ssh_key" {
+  type = string
+} 
