@@ -32,28 +32,25 @@ stages:
 # Provision the Infrastructure with Terraform 
 - stage: Provision
   displayName: 'Terraforming on Azure...'
-  dependsOn: Build
   jobs:
   - job: Provision
-    displayName: 'Provisioning Container Instance'
+    displayName: 'Provisioning Infrastructure'
     pool:
       vmImage: 'ubuntu-latest'
     variables: 
-    - group: TeraformEnvVars
+    - group: Teraform-Env-Vars
     steps:
-    - name: 'RunTerraform'
-      displayName: 'Run Terraform'
-      workingDirectory: '$(System.DefaultWorkingDirectory)/Infrastructure\ as\ Code/terraform/)'
-      script: |
+    - script: |
         set -e
         terraform init -input=false
         terraform apply -input=false -auto-approve
+        terraform output -raw server_ip
+      name: 'RunTerraform'
+      displayName: 'Run Terraform'
+      workingDirectory: "$(System.DefaultWorkingDirectory)/Infrastructure\ as\ Code/terraform/"
       env:
         ARM_CLIENT_ID: $(ARM_CLIENT_ID)
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
         ARM_TENANT_ID: $(ARM_TENANT_ID)
         ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-        TF_VAR_imagebuild: $(tag)
-        TF_VAR_ssh_key: $(public_key)
-        
-        
+        TF_VAR_ssh_key: $(TF_VAR_ssh_key)
