@@ -36,7 +36,7 @@ tree ./terraform
 └── variables.tf
 ```
 3) **Ansible**: Configured the provisioned server using ansible playbook automatically after terraform completed building the infrastructure.
-checkout ansible playbook in the [`ansible`](https://github.com/Sufi-Dev/weatherapi/tree/main/ansible) directory.
+checkout ansible playbook in the [`ansible`](https://github.com/Sufi-Dev/.NET-API-CI-CD-Workflow/tree/main/Configuration%20Management/ansible) directory.
 
 ## Tools 🛠
 <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/azure.svg" alt="azure" width="40" height="20"/> Azure
