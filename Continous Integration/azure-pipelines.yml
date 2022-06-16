@@ -11,6 +11,7 @@ resources:
 variables:
   tag: '$(Build.BuildId)'
 
+# A docker container will be used to build and test the app, which will then be uploaded to the Azure Container Registry (ACR)
 stages:
 - stage: Build
   displayName: Build image
@@ -22,34 +23,10 @@ stages:
     steps:
     - task: Docker@2
       inputs:
-        containerRegistry: 'Binarythistle Docker Hub'
-        repository: 'binarythistle/weatherapi'
+        containerRegistry: 'Sufi ACR Private Registery'
+        repository: 'Awesome-API'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        tags: |
-          $(tag)
-- stage: Provision
-  displayName: 'Terraforming on Azure...'
-  dependsOn: Build
-  jobs:
-  - job: Provision
-    displayName: 'Provisioning Container Instance'
-    pool:
-      vmImage: 'ubuntu-latest'
-    variables: 
-    - group: TeraformEnvVars
-    steps:
-    - script: |
-        set -e
+        tags: $(tag)
 
-        terraform init -input=false
-        terraform apply -input=false -auto-approve
-      name: 'RunTerraform'
-      displayName: 'Run Terraform'
-      env:
-        ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-        ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-        ARM_TENANT_ID: $(ARM_TENANT_ID)
-        ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-        TF_VAR_imagebuild: $(tag)
         
