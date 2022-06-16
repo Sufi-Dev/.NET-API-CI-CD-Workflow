@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Sufi-Dev/weatherapi/Sufi-Dev-Test/weatherapi.png" >
+<img src="https://raw.githubusercontent.com/Sufi-Dev/.NET-API-CI-CD-Workflow/main/weatherapi.png" >
 
 ## Project Info <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/info.gif" width="30" height="30">
 This web API is sample basic API that is designed to respond with weather data.
