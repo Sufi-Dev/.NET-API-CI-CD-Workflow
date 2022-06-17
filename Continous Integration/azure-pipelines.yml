@@ -50,7 +50,6 @@ stages:
       name: 'RunTerraform'
       displayName: 'Run Terraform'
       workingDirectory: "$(System.DefaultWorkingDirectory)/Infrastructure\ as\ Code/terraform/"
-      
       env:
         ARM_CLIENT_ID: $(ARM_CLIENT_ID)
         ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
