@@ -1,5 +1,7 @@
-# Docker
-# Build a Docker image 
+# Pipeline Sumary
+# Buidl Stage : Build a Docker image & Publish
+# Provision Stage : Provision Infrastructure with Terraform
+# Configure Stage : Configure Server with Ansible
 
 trigger:
 - master
