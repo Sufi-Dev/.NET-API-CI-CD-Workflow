@@ -84,3 +84,9 @@ stages:
       name: 'RunAnsible'
       displayName: 'Run Ansible'
       workingDirectory: "$(System.DefaultWorkingDirectory)/Configuration\ Management/ansible"
+      env:
+        Registery: $(Registery)
+        username: $(username)
+        pass: $(pass)
+        build: $(tag)
+
