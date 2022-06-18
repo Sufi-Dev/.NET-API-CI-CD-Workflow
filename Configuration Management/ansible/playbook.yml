@@ -23,7 +23,7 @@
       docker_container:
        name: webserver
        state: present
-       image: awesome-api:latest
+       image: awesome-api:"{{ lookup('env','build') }}"
        expose: 80
 
     - name: Ensure Container is Running
