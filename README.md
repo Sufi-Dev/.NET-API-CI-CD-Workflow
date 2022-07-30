@@ -7,7 +7,7 @@ The API will have to be linked to CosmosDB., an Azure NoSQL database. The focus 
 ## Project Map <img src="https://raw.githubusercontent.com/Sufi-Dev/Sufi-Dev/main/icons/map.png" width="30" height="30">
 1) **CI/CD piplines**: I used Azure DevOps to set up fully automated CI/CD piplines.<br>
    Checkout the code for the pipeline in [`azure-pipelines.yml`](https://github.com/Sufi-Dev/.NET-API-CI-CD-Workflow/blob/main/Continous%20Integration/azure-pipelines.yml)as well as the Docker file in [`Dockerfile`](https://github.com/Sufi-Dev/.NET-API-CI-CD-Workflow/blob/main/Continous%20Integration/Dockerfile)<br>
-2) **Terraform**: I provisioned cloud infrastructued using terraform.<br>
+2) **Terraform**: I provisioned cloud infrastructure using terraform.<br>
 checkout terraform files in the [`terraform`](https://github.com/Sufi-Dev/.NET-API-CI-CD-Workflow/tree/main/Infrastructure%20as%20Code/terraform) directory.
 ```
 tree ./terraform 
